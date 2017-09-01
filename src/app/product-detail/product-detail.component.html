@@ -1,0 +1,217 @@
+<div class="col-md-9">
+  <div class="products-details" *ngIf="images.length !== 0">
+    <div class="preview_image">
+      <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+        <div class='carousel-outer'>
+
+          <div class='carousel-inner'>
+            <div class='item' [ngClass]="{'active' : i === 0}" *ngFor="let image of images; let i = index">
+              <img src="{{image.url}}" alt='' id="zoom_05" [attr.data-zoom-image]="image.url" />
+            </div>
+          </div>
+
+          <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+                <span class='glyphicon glyphicon-chevron-left'></span>
+            </a>
+          <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+              <span class='glyphicon glyphicon-chevron-right'></span>
+            </a>
+        </div>
+
+        <ol class='carousel-indicators mCustomScrollbar meartlab'>
+          <li data-target='#carousel-custom' *ngFor="let image of images; let i = index" [attr.data-slide-to]="i" [ngClass]="{'active': i === 0}">
+            <img src="{{image.url}}" alt='' />
+          </li>
+        </ol>
+
+      </div>
+    </div>
+
+    <div class="products-description">
+      <h5 class="name">
+        {{product.name}}
+      </h5>
+      <p>Sale by: <a class="review_num" href="#"><span class=" light-red">{{product.shop_id}}</span></a>
+      </p>
+
+      <p>
+        Quantity in stock: <span class=" light-red">{{product.quantity_stock}}</span>
+      </p>
+      <p>
+        {{product.description}}
+      </p>
+      <hr class="border">
+      <div class="price">
+        Price :
+        <span class="new_price">{{product.price}}<sup>$</sup></span>
+        <span class="old_price">{{product.price}}<sup>$</sup></span>
+      </div>
+      <hr class="border">
+      <div class="wided">
+        <div class="qty">
+          Qty &nbsp;&nbsp;:
+          <select>
+                <option>
+                  1
+                </option>
+              </select>
+        </div>
+        <div class="button_group">
+          <button class="button">
+                Add To Cart
+              </button>
+          <button class="button compare">
+                <i class="fa fa-exchange">
+                </i>
+              </button>
+          <button class="button favorite">
+                <i class="fa fa-heart-o">
+                </i>
+              </button>
+          <button class="button favorite">
+                <i class="fa fa-envelope-o">
+                </i>
+              </button>
+        </div>
+      </div>
+      <div class="clearfix">
+      </div>
+      <hr class="border">
+      <img src="../../../assets/images/share.png" alt="" class="pull-right">
+    </div>
+  </div>
+  <div class="clearfix">
+  </div>
+  <div class="tab-box">
+    <div id="tabnav">
+      <ul>
+        <li>
+          <a href="#Descraption"> DETAIL </a>
+        </li>
+        <li>
+          <a href="#Reviews"> REVIEW </a>
+        </li>
+        <li>
+          <a href="#tags"> PRODUCT TAGS </a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content-wrap">
+      <div class="tab-content" id="Descraption">
+        {{product.detail}}
+      </div>
+      <div class="tab-content" id="Reviews">
+        <form>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <div class="form-row">
+                <label class="lebel-abs">
+                      Your Name 
+                      <strong class="red">
+                        *
+                      </strong>
+                    </label>
+                <input type="text" name="" class="input namefild">
+              </div>
+              <div class="form-row">
+                <label class="lebel-abs">
+                      Your Email 
+                      <strong class="red">
+                        *
+                      </strong>
+                    </label>
+                <input type="email" name="" class="input emailfild">
+              </div>
+              <div class="form-row">
+                <label class="lebel-abs">
+                      Summary of You Review 
+                      <strong class="red">
+                        *
+                      </strong>
+                    </label>
+                <input type="text" name="" class="input summeryfild">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="form-row">
+                <label class="lebel-abs">
+                      Your Name 
+                      <strong class="red">
+                        *
+                      </strong>
+                    </label>
+                <textarea class="input textareafild" name="" rows="7">
+                    </textarea>
+              </div>
+              <div class="form-row">
+                <input type="submit" value="Submit" class="button">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="tab-content">
+        <div class="review">
+          <p class="rating">
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star-half-o gray">
+                </i>
+            <i class="fa fa-star-o gray">
+                </i>
+          </p>
+          <h5 class="reviewer">
+            Reviewer name
+          </h5>
+          <p class="review-date">
+            Date: 01-01-2014
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a eros neque. In sapien est, malesuada non interdum id,
+            cursus vel neque.
+          </p>
+        </div>
+        <div class="review">
+          <p class="rating">
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star light-red">
+                </i>
+            <i class="fa fa-star-half-o gray">
+                </i>
+            <i class="fa fa-star-o gray">
+                </i>
+          </p>
+          <h5 class="reviewer">
+            Reviewer name
+          </h5>
+          <p class="review-date">
+            Date: 01-01-2014
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a eros neque. In sapien est, malesuada non interdum id,
+            cursus vel neque.
+          </p>
+        </div>
+      </div>
+      <div class="tab-content" id="tags">
+        <div class="tag">
+          Add Tags :
+          <input type="text" name="">
+          <input type="submit" value="Tag">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+  </div>
+  <!-- <app-same-category [categorySlug]="productSlug"></app-same-category> -->
+</div>
+<div class="clearfix">
+</div>
