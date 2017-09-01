@@ -19,9 +19,26 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "../src/assets/css/bootstrap.css",
+        "../src/assets/css/font-awesome.min.css",
+        "../src/assets/css/flexslider.css",
+        "../node_modules/alertifyjs/build/css/alertify.min.css",
+        "../node_modules/alertifyjs/build/css/themes/default.min.css",
+        "../src/assets/css/sequence-looptheme.css",
+        "../node_modules/angular2-busy/build/style/busy.css",
+        "../src/assets/css/style.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../src/assets/js/jquery-1.10.2.min.js",
+        "../src/assets/js/bootstrap.min.js",
+        "../src/assets/js/jquery.flexslider.js",
+        "../src/assets/js/jquery.easing.1.3.js",
+        "../src/assets/js/jquery.sequence-min.js",
+        "../src/assets/js/jquery.elevatezoom.js",
+        "../src/assets/js/jquery.carouFredSel.js",
+        "../node_modules/alertifyjs/build/alertify.min.js",
+        "../src/assets/js/script.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

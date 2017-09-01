@@ -4,5 +4,19 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_url: 'https://obscure-island-27156.herokuapp.com/v1',
+  // api_url: 'http://172.17.19.119:3000/v1',
+  current_user: 'CURRENT_USER',
+
+  // System url
+  url_home: 'home',
+
+  // System messages success
+  login_success: `Login success!`,
+  logged: `You already logged!`,
+
+  // System messages errors
+  error_load_data: `Yikes! There was was a problem with our hyperdrive device and we couldn't retrieve your data!`,
+  error_connect_to_server: `Can't connect to server!`
 };

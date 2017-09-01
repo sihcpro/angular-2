@@ -1,0 +1,18 @@
+  <div class="products">
+    <div class="thumbnail">
+      <a href="" [routerLink]="['/product']" [queryParams]="{name: product.slug}">
+            <img src="{{product.product_images[0].url}}" alt="product image">
+          </a>
+    </div>
+    <div class="productname">
+      <a href="" [routerLink]="['/product']" [queryParams]="{name: product.slug}" title="{{product.name}}">
+          {{product.name.substring(0,20)}}...
+          </a>
+    </div>
+    <h4 class="price"><strong>$</strong>{{product.price}}</h4>
+    <div class="button_group">
+      <button class="button add-cart" type="button">Add To Cart</button>
+      <button class="button compare" type="button"> <i class="fa fa-exchange"></i></button>
+      <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+    </div>
+  </div>

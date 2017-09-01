@@ -1,0 +1,43 @@
+<div class="col-md-9">
+
+  <div class="checkout-page">
+
+    <div class="step-description">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+          <div class="run-customer">
+            <h5>Login</h5>
+            <form name="loginForm" #f="ngForm" (ngSubmit)="f.valid && login()" novalidate>
+              <div class="form-row">
+                <label class="lebel-abs">Email<strong class="red">*</strong></label>
+                <input type="email" email class="input namefild" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+                <div *ngIf="email.errors && (email.dirty || email.touched)" class="error-input red">
+                  <span [hidden]="!email.errors.email">Invalid email!</span>
+                </div>
+              </div>
+              <div class="form-row">
+                <label class="lebel-abs">Password<strong class="red">*</strong></label>
+                <input type="password" class="input namefild" name="password" [(ngModel)]="model.password" #password="ngModel" minlength="6"
+                  required>
+                <div *ngIf="password.errors && (password.dirty || password.touched)" class="error-input red">
+                  <span [hidden]="!password.errors.required">Password cant't blank!</span>
+                  <span [hidden]="!password.errors.minlength">Password too short!</span>
+                </div>
+              </div>
+
+              <p class="forgoten">
+                <a href="#">Forgoten your password?</a>
+              </p>
+
+              <button type="submit">Login</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
