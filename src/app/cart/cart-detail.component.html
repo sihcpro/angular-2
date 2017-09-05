@@ -1,0 +1,69 @@
+<div class="col-md-9">
+  <div class="leftbar product-in-cart">
+    <h3>Your cart</h3>
+    <table class="table table-striped">
+      <thead class="title-table">
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let product of all_product; let i = index ">
+          <td class="small-img">
+            <a [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">
+              <img src="{{product.url}}">
+            </a>
+          </td>
+          <td class="info">
+            <a class="name" [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">
+              {{product.product_name}}
+            </a>
+            <br>
+            <a [routerLink]="['/product']" [queryParams]="{name: product.shop_slug}">
+              {{product.shop_name}}
+            </a>
+            <br>
+            <span>
+              {{statusQuantity(product.quantity_stock)}}
+            </span>
+          </td>
+          <td class="price">
+            {{product.price_read}} $
+          </td>
+          <td class="quantity">
+            <button (click)=" changeQuantity( i, -1)" [disabled]=" product.quantity < 2">-</button>
+            {{product.quantity}}
+            <button (click)=" changeQuantity( i, 1)">+</button>
+          </td>
+          <td class="price">
+            {{product.subtotal_price_read}} $
+          </td>
+          <td class="destroy">
+            <button (click)=" deleteProduct( i)">x</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="col-md-3">
+  <div class="leftbar cart-sumary">
+    <h3 class="title">
+      Order Summary
+    </h3>
+    <table class="table table-striped">
+      <tr>
+        <th>Subtotal:</th>
+        <td>{{easyReadNumber(total_price)}} $</td>
+      </tr>
+      <tr>
+        <th>Total:</th>
+        <td>{{easyReadNumber(total_price)}} $</td>
+      </tr>
+    </table>
+    <button>Make Order</button>
+  </div>
+</div>

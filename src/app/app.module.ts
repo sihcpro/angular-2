@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsByCategoryComponent } from './products-by-category/products-by-category.component';
+import { CartDetailComponent } from './cart/cart-detail.component';
 import {
   HeaderComponent,
   FooterComponent,
@@ -22,7 +23,8 @@ import {
   JwtService,
   NotificationService,
   AuthenService,
-  PagerService
+  PagerService,
+  CartService
 } from './shared';
 
 @NgModule({
@@ -39,7 +41,8 @@ import {
     SingleProductComponent,
     ListProductComponent,
     ProductDetailComponent,
-    ProductsByCategoryComponent
+    ProductsByCategoryComponent,
+    CartDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import {
     JwtService,
     NotificationService,
     AuthenService,
-    PagerService
+    PagerService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

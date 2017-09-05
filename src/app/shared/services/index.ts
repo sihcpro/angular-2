@@ -4,3 +4,4 @@ export * from './auth-guard.service';
 export * from './notification.service';
 export * from './authen.service';
 export * from './pager.service';
+export * from './cart.service';
