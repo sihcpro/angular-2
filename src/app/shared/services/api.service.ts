@@ -35,6 +35,7 @@ export class ApiService {
   }
 
   post = (url: string, data?: any): Observable<any> => {
+    console.log('ok');
     return this._http.post(environment.api_url + url, data, this.jwt())
       .catch(this.handleError)
       .map(this.extractData);

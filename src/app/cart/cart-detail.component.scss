@@ -1,0 +1,63 @@
+.product-in-cart{
+
+  .title-table{
+
+    th{
+      text-align: center;
+      font-size: 120%;
+    }
+  }
+  .small-img{
+    height: 100px;
+    width: 100px;
+  }
+  .info
+  {
+    width: 40%;
+  }
+  .name{
+    text-transform: uppercase;
+    font-size: 150%;
+  }
+  .price{
+    font-weight: bold;
+    font-size: 150%;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .quantity{
+    width: 15%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 120%;
+    button{
+      padding: 0px 5px;
+    }
+  }
+  .destroy{
+    padding: 0px;
+    width: 5px;
+
+    button{
+      padding: 0px 5px;
+      border: 0px;
+      background-color: transparent;
+      color: red;
+    }
+  }
+}
+
+.cart-sumary{
+  font-size: 120%;
+
+  th{
+    font-weight: bold;
+  }
+  td{
+    text-align: right;
+  }
+  button{
+    width: 100%;
+    background-color: #56ff00;
+  }
+}
