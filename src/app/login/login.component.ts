@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
           this._jwtServer.saveToken(data.auth_token);
           this._notificationService.printSuccessMessage(environment.login_success);
           this._router.navigate([environment.url_home]);
+          window.history.back();
         } else {
           this._notificationService.printErrorMessage(data.message)
         }

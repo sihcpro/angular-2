@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 
 import { PagerService } from '../../services/pager.service';
 
@@ -7,9 +7,11 @@ import { PagerService } from '../../services/pager.service';
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.scss']
 })
-export class ListProductComponent implements OnInit {
+export class ListProductComponent implements OnChanges {
 
   @Input() allItems: any[] = [];
+
+  nullData: boolean = false;
 
   pager: any = {};
 
@@ -21,12 +23,23 @@ export class ListProductComponent implements OnInit {
     private _pagerService: PagerService
   ) { }
 
-  ngOnInit() {
-    setTimeout(() => {
-      console.log(this.allItems);
-      this.setPage(1);
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+    this.loading = true;
+    if (changes.allItems && !changes.allItems.firstChange) {
       this.loading = false;
-    }, 3000);
+      console.log(changes.allItems.currentValue.length !== 0);
+
+      if (changes.allItems.currentValue.length !== 0) {
+        this.nullData = false;
+        this.setPage(1);
+        console.log(changes.allItems);
+      } else {
+        this.nullData = true;
+        console.log(changes.allItems);
+      }
+    } else {
+      this.nullData = true;
+    }
   }
 
   setPage = (page: number) => {
@@ -34,8 +47,10 @@ export class ListProductComponent implements OnInit {
       return;
     }
     this.pager = this._pagerService.getPager(this.allItems.length, page);
-
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
+  ngOnDestroy() {
+
+  }
 }

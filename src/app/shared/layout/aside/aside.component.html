@@ -5,10 +5,10 @@
     </h3>
     <ul *ngFor="let category of categories" id="left-menu">
       <li>
-        <a [routerLink]="['/category']" [queryParams]="{category: category.slug}" class="parent-category">{{category.name}}</a>
+        <a [routerLink]="['category', category.slug]" class="parent-category">{{category.name}}</a>
         <span *ngIf="category.children.size != 0">
             <ul *ngFor="let child of category.children">
-              <li><a href="" [routerLink]="['/category']" [queryParams]="{category: child.slug}" >{{child.name}}</a></li>
+              <li><a href="" [routerLink]="['category', child.slug]" >{{child.name}}</a></li>
             </ul>
           </span>
       </li>
