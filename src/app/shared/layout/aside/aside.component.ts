@@ -9,16 +9,21 @@ import { ApiService } from '../../services/index';
 export class AsideComponent implements OnInit {
 
   categories: any;
+  sub: any;
 
   constructor(
     private _apiService: ApiService
-  ) {
-    this._apiService.getUnAuthorticate('/categories')
+  ) { }
+
+  ngOnInit() {
+    this.sub = this._apiService.getUnAuthorticate('/categories')
       .subscribe(data => {
         this.categories = data;
         console.log(this.categories);
       });
   }
 
-  ngOnInit() { }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

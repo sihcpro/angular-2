@@ -13,6 +13,7 @@ export class ProductsByCategoryComponent implements OnInit {
   loading: boolean = true;
   categorySlug: string = '';
   productList: any[] = [];
+  sub: any;
   constructor(
     private _apiService: ApiService,
     private _route: ActivatedRoute
@@ -20,14 +21,20 @@ export class ProductsByCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._route.queryParams.subscribe(params => {
-      this.categorySlug = params['category'];
-      console.log(this.categorySlug);
+    this.sub = this._route.params.subscribe(params => {
+      this.categorySlug = params['slug'];
+      // console.log(this.categorySlug);
+
+      this._apiService.get('/products_by_categories/' + this.categorySlug)
+        .subscribe(data => {
+          this.productList = data;
+          // console.log(this.productList);
+
+        });
     });
-    this._apiService.get('/products_by_categories/' + this.categorySlug)
-      .subscribe(data => {
-        this.productList = data;
-      });
   }
 
+  onDestroy() {
+    this.sub.unsubcribe();
+  }
 }

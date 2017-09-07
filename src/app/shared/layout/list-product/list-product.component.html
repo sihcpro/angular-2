@@ -8,7 +8,15 @@
   </div>
   <div class="clearfix">
   </div>
-  <div class="toolbar">
+
+  
+  <div class="alert alert-info" [hidden]="!nullData">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Null data</strong> Alert body ...
+  </div>
+  
+
+  <div class="toolbar" [hidden]="nullData">
     <div class="sorter bottom">
       <div class="sort-by">
         Sort by :

@@ -35,6 +35,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this._apiService.get('/products/' + this.productSlug)
       .subscribe(data => {
         this.product = data;
+        
         this.images = this.product.product_images;
         this.loading = false;
       }, err => {
@@ -46,6 +47,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this._apiService.getUnAuthorticate('/products/' + this.productSlug)
       .subscribe(data => {
         this.product = data;
+        console.log(this.product);
         this.images = this.product.product_images;
         this.loading = false;
       }, err => {

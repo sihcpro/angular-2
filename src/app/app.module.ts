@@ -24,8 +24,11 @@ import {
   NotificationService,
   AuthenService,
   PagerService,
-  CartService
+  CartService,
+  AuthGuardService
 } from './shared';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import {
     ProductDetailComponent,
     ProductsByCategoryComponent,
     CartDetailComponent,
+    UserProfileComponent,
+    ConfirmAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import {
     NotificationService,
     AuthenService,
     PagerService,
-    CartService
+    CartService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

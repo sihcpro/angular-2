@@ -1,0 +1,13 @@
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-2" style="text-align: center;">
+  <h3>Confirm your account</h3>
+  <br>
+  <br>
+  <div *ngIf="loading">
+    <img src="https://caterpillar.i.lithium.com/skins/images/66373A7FC4C3A748F9BB7CEBA5D56B82/base/images/feedback_loading.gif"
+      alt="">
+    <p>Please wait to proccess!</p>
+  </div>
+  <div *ngIf="!loading">
+    <span>Cannot confirm your account, please try again</span>
+  </div>
+</div>
