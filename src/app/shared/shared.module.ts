@@ -12,6 +12,9 @@ import {
   SingleProductComponent,
   ListProductComponent
 } from './layout';
+import { PricePipe } from './pipes';
+import { ShowQuantityPipe } from './pipes/show-quantity.pipe';
+import { SearchComponent } from './layout/search/search.component';
 
 
 @NgModule({
@@ -32,7 +35,13 @@ import {
 
     SingleProductComponent,
 
-    ListProductComponent
+    ListProductComponent,
+
+    PricePipe,
+
+    ShowQuantityPipe,
+
+    SearchComponent
 
   ],
 

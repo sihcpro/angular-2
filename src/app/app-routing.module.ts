@@ -10,6 +10,7 @@ import { CartDetailComponent } from './cart/cart-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
+import { ProductsBySearchComponent } from './products-by-search/products-by-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'product', component: ProductDetailComponent },
   { path: 'category/:slug', component: ProductsByCategoryComponent },
   { path: 'cart', component: CartDetailComponent },
-  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuardService] }
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'find/:key', component: ProductsBySearchComponent}
 ];
 
 @NgModule({

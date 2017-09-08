@@ -10,7 +10,6 @@ import { ApiService } from "app/shared";
 })
 export class ProductsByCategoryComponent implements OnInit {
 
-  loading: boolean = true;
   categorySlug: string = '';
   productList: any[] = [];
   sub: any;
@@ -34,7 +33,7 @@ export class ProductsByCategoryComponent implements OnInit {
     });
   }
 
-  onDestroy() {
-    this.sub.unsubcribe();
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

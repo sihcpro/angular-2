@@ -10,7 +10,7 @@
           <th>Subtotal</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf=" all_product != null">
         <tr *ngFor=" let product of all_product; let i = index ">
           <td class="small-img">
             <a [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">
@@ -22,16 +22,16 @@
               {{product.product_name}}
             </a>
             <br>
-            <a [routerLink]="['/product']" [queryParams]="{name: product.shop_slug}">
+            <a [routerLink]="['/shop']" [queryParams]="{name: product.shop_slug}">
               {{product.shop_name}}
             </a>
             <br>
             <span>
-              {{statusQuantity(product.quantity_stock)}}
+              {{product.quantity_stock | showQuantity}}
             </span>
           </td>
           <td class="price">
-            {{product.price_read}} $
+            {{product.price | price}} $
           </td>
           <td class="quantity">
             <button (click)=" changeQuantity( i, -1)" [disabled]=" product.quantity < 2">-</button>
@@ -39,7 +39,7 @@
             <button (click)=" changeQuantity( i, 1)">+</button>
           </td>
           <td class="price">
-            {{product.subtotal_price_read}} $
+            {{product.subtotal_price | price}} $
           </td>
           <td class="destroy">
             <button (click)=" deleteProduct( i)">x</button>
@@ -57,13 +57,13 @@
     <table class="table table-striped">
       <tr>
         <th>Subtotal:</th>
-        <td>{{easyReadNumber(total_price)}} $</td>
+        <td>{{total_price | price}} $</td>
       </tr>
       <tr>
         <th>Total:</th>
-        <td>{{easyReadNumber(total_price)}} $</td>
+        <td>{{total_price | price}} $</td>
       </tr>
     </table>
-    <button>Make Order</button>
+    <button (click)=" makeOrder()" [disabled]="check_user">Make Order</button>
   </div>
 </div>

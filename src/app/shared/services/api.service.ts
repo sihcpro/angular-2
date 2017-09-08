@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';

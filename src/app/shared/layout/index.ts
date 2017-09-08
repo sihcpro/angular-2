@@ -5,3 +5,4 @@ export * from './aside/aside.component';
 export * from './slider/slider.component';
 export * from './single-product/single-product.component';
 export * from './list-product/list-product.component';
+export * from './search/search.component';

@@ -25,6 +25,7 @@ export class ListProductComponent implements OnChanges {
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     this.loading = true;
+    console.log(this.allItems);
     if (changes.allItems && !changes.allItems.firstChange) {
       this.loading = false;
       console.log(changes.allItems.currentValue.length !== 0);

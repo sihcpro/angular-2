@@ -1,56 +1,65 @@
-<div class="products-grid">
+<layout-aside></layout-aside>
 
-  <div class="row" [style.position]="relative">
-    <img class="loading" src="../../../../assets/images/loading.gif" *ngIf="loading">
-    <div class="col-md-4 col-sm-6" *ngFor="let product of pagedItems">
-      <layout-single-product [product]="product"></layout-single-product>
-    </div>
-  </div>
-  <div class="clearfix">
-  </div>
+<div class="col-md-9">
 
-  
-  <div class="alert alert-info" [hidden]="!nullData">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Null data</strong> Alert body ...
-  </div>
-  
+  <layout-slider></layout-slider>
 
-  <div class="toolbar" [hidden]="nullData">
-    <div class="sorter bottom">
-      <div class="sort-by">
-        Sort by :
-        <select name="">
-              <option value="Default" selected>
-                Default
-              </option>
-              <option value="Name">
-                Name
-              </option>
-              <option value="<strong>#</strong>">
-                Price
-              </option>
-            </select>
+  <div class="clearfix"></div>
+
+  <div class="products-grid">
+
+    <div class="row" [style.position]="relative">
+      <img class="loading" src="../../../../assets/images/loading.gif" *ngIf="loading">
+      <div class="col-md-4 col-sm-6" *ngFor="let product of pagedItems">
+        <layout-single-product [product]="product"></layout-single-product>
       </div>
     </div>
+    <div class="clearfix">
+    </div>
 
-    <!-- page -->
-    <div class="pager" *ngIf="pager.pages && pager.pages.length">
-      <span [ngClass]="{disabled:pager.currentPage === 1}">
+
+    <div class="alert alert-info" [hidden]="!nullData">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>Null data</strong> Alert body ...
+    </div>
+
+
+    <div class="toolbar" [hidden]="nullData">
+      <div class="sorter bottom">
+        <div class="sort-by">
+          Sort by :
+          <select name="">
+            <option value="Default" selected>
+              Default
+            </option>
+            <option value="Name">
+              Name
+            </option>
+            <option value="<strong>#</strong>">
+              Price
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- page -->
+      <div class="pager" *ngIf="pager.pages && pager.pages.length">
+        <span [ngClass]="{disabled:pager.currentPage === 1}">
           <a (click)="setPage(pager.currentPage - 1)" class="prev-page">
             <i class="fa fa-angle-left"></i>
           </a>
         </span>
-      <span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
           <a (click)="setPage(page)" style="cursor: pointer;">{{page}}</a>
         </span>
-      <span [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)" class="next-page">
-              <i class="fa fa-angle-right"></i>
-            </a>
-          </span>
+        <span [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)" class="next-page">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </span>
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
+    <div class="clearfix">
+    </div>
   </div>
 </div>

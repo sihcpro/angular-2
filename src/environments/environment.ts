@@ -5,9 +5,9 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://obscure-island-27156.herokuapp.com/v1',
+  // api_url: 'https://obscure-island-27156.herokuapp.com/v1',
   // api_url: 'http://172.17.19.141:3000/v1',
-  // api_url: 'http://0.0.0.0:3000/v1',
+  api_url: 'http://0.0.0.0:3000/v1',
   current_user: 'CURRENT_USER',
 
   // System url

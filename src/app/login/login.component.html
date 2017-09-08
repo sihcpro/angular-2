@@ -19,7 +19,7 @@
                 <label class="lebel-abs">Password<strong class="red">*</strong></label>
                 <input type="password" class="input namefild" name="password" [(ngModel)]="model.password" #password="ngModel" minlength="6"
                   required>
-                <div *ngIf="password.errors && (password.dirty || password.touched)" class="error-input red">
+                <div *ngIf="password.errors && ( password.dirty || password.touched)" class="error-input red">
                   <span [hidden]="!password.errors.required">Password cant't blank!</span>
                   <span [hidden]="!password.errors.minlength">Password too short!</span>
                 </div>

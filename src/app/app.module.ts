@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsByCategoryComponent } from './products-by-category/products-by-category.component';
 import { CartDetailComponent } from './cart/cart-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
+import { ProductsBySearchComponent } from './products-by-search/products-by-search.component';
 import {
   HeaderComponent,
   FooterComponent,
@@ -19,16 +22,22 @@ import {
   SliderComponent,
   SingleProductComponent,
   ListProductComponent,
+  SearchComponent,
+
   ApiService,
   JwtService,
   NotificationService,
   AuthenService,
   PagerService,
   CartService,
-  AuthGuardService
+  AuthGuardService,
+  AddCartService,
+  ProductService,
+
+  PricePipe,
+  ShowQuantityPipe
 } from './shared';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +57,12 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
     CartDetailComponent,
     UserProfileComponent,
     ConfirmAccountComponent,
+    SearchComponent,
+    ProductsBySearchComponent,
+
+    PricePipe,
+    ShowQuantityPipe,
+    MakeOrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +78,9 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
     AuthenService,
     PagerService,
     CartService,
-    AuthGuardService
+    AuthGuardService,
+    AddCartService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

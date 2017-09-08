@@ -1,5 +1,10 @@
-<a [routerLink]="['/cart']" class="cart-icon">cart <span class="cart_no">02</span></a>
-<ul class="option-cart-item">
+<a [routerLink]="['/cart']" class="cart-icon">
+  cart
+  <span class="cart_no">{{amountProducts}}</span>
+</a>
+
+
+<!-- <ul class="option-cart-item">
   <li>
     <div class="cart-item">
       <div class="image"><img src="../../../../assets/images/products/thum/products-01.png" alt=""></div>
@@ -15,4 +20,4 @@
   </li>
 
   <li><span class="total">Total <strong>$60.00</strong></span><button class="checkout" onClick="location.href='checkout.html'">CheckOut</button></li>
-</ul>
+</ul> -->
