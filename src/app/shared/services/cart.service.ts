@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
+import { environment } from '../../../environments/environment';
 import { NotificationService } from './notification.service';
 import { JwtService } from './jwt.service';
 import { ApiService } from './api.service';
@@ -103,7 +104,7 @@ export class CartService {
       );
   }
 
-  private getProducts = () => {
+  getProducts = () => {
     this._apiServer.get('/users/carts')
     .subscribe(
       data => {
@@ -123,6 +124,13 @@ export class CartService {
       ), () => {
       this._notificationService.printErrorMessage(environment.error_load_data);
     }
+  }
+
+  orderSuccess = () => {
+    this.all_products = [];
+    this.total_price = 0.0;
+    this.amount_products = 0;
+    this.update();
   }
 
   private update = () => {

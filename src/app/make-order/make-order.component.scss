@@ -1,0 +1,17 @@
+.cart-sumary{
+  font-size: 120%;
+
+  th{
+    font-weight: bold;
+  }
+  td{
+    text-align: right;
+  }
+  button{
+    width: 100%;
+    background-color: #56ff00;
+  }
+  .product-name{
+    float: left;
+  }
+}

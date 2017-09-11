@@ -14,6 +14,8 @@ import { CartDetailComponent } from './cart/cart-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { ProductsBySearchComponent } from './products-by-search/products-by-search.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {
   HeaderComponent,
   FooterComponent,
@@ -37,7 +39,6 @@ import {
   PricePipe,
   ShowQuantityPipe
 } from './shared';
-import { MakeOrderComponent } from './make-order/make-order.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { MakeOrderComponent } from './make-order/make-order.component';
     PricePipe,
     ShowQuantityPipe,
     MakeOrderComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,

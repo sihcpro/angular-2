@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import {
   NotificationService,
   AuthenService,
-  JwtService
+  JwtService,
+  CartService
 } from "app/shared";
 
 @Component({
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private _notificationService: NotificationService,
     private _router: Router,
     private _authenService: AuthenService,
-    private _jwtServer: JwtService
+    private _jwtServer: JwtService,
+    private _cartService: CartService,
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
           this._jwtServer.destroyToken();
           this._jwtServer.saveToken(data.auth_token);
           this._notificationService.printSuccessMessage(environment.login_success);
+          this._cartService.getProducts();
           this._router.navigate([environment.url_home]);
           window.history.back();
         } else {

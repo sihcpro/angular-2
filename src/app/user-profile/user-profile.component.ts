@@ -19,7 +19,6 @@ export class UserProfileComponent implements OnInit {
     private _router: Router
   ) {
     this._apiService.get('/users').subscribe(data => {
-      console.log(data);
       this.user = data;
     })
   }

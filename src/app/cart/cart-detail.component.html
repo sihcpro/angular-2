@@ -10,7 +10,7 @@
           <th>Subtotal</th>
         </tr>
       </thead>
-      <tbody *ngIf=" all_product != null">
+      <tbody *ngIf=" all_product !== []">
         <tr *ngFor=" let product of all_product; let i = index ">
           <td class="small-img">
             <a [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">

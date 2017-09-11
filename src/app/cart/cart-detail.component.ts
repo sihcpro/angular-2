@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, NotificationService, ApiService } from 'app/shared';
-import { environment } from "environments/environment";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,10 +14,13 @@ export class CartDetailComponent implements OnInit {
   all_product: any;
   total_price: number = 0.0;
   user: any;
+
   subData: any;
   subTotal: any;
+  subUser: any;
 
   constructor(
+    private _router: Router,
     private _apiService: ApiService,
     private _cartService: CartService,
     private _notificationService: NotificationService
@@ -42,16 +45,22 @@ export class CartDetailComponent implements OnInit {
     this.loading = false;
   }
 
-  private checkUser = () => {
-    this._apiService.get('/users')
-    .subscribe(data => {
-      this.user = data;
-      this.check_user = false;
-    });
+  makeOrder = () => {
+    if( this.user === undefined )
+      this._router.navigate(['/login']);
+    else
+      this._router.navigate(['/make-order']);
   }
 
-  makeOrder = () => {
-    console.log( this.user );
+  private checkUser = () => {
+    this.subUser = this._apiService.get('/users')
+    .subscribe(
+      data => {
+        if( data.status === undefined ) {
+          this.user = data;
+        }
+        this.check_user = false;
+      });
   }
 
   private getData = () => {
@@ -59,14 +68,15 @@ export class CartDetailComponent implements OnInit {
     this.subData = this._cartService.allProducts
     .subscribe(
       data => {
-        this.all_product = data;
+        if( data.status === undefined ) {
+          this.all_product = data;
+        }
         this.loading = false;
       },
       error => {
         this.all_product = null;
         this.loading = false;
-      }
-      );
+      });
   }
 
   private getTotalPrice = () => {
@@ -82,5 +92,6 @@ export class CartDetailComponent implements OnInit {
   ngOnDestroy() {
     this.subData.unsubscribe();
     this.subTotal.unsubscribe();
+    this.subUser.unsubscribe();
   }
 }
