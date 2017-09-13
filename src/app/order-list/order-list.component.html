@@ -1,0 +1,25 @@
+<app-user-aside></app-user-aside>
+
+<div class="col-md-9">
+  <div class="checkout-steps">
+    <div class="no-order" *ngIf=" list_order.length === 0">You don't have any order!</div>
+
+    <div class="list-order" *ngIf=" list_order.length !== 0">
+      <div class="steps active" *ngFor=" let order of list_order">
+        <span class="step-title">Order <a href="" [routerLink]="['/order',order.id]">{{order.id | orderId}}</a></span>
+        <div class="step-description">
+          <div class="row">
+            <div class="col-md-8">
+              <div>Had ordered at: {{order.time}}</div>
+              <div>Status: {{order.status}}</div>
+            </div>
+            <div class="col-md-4">
+              <div>This order to {{order.receiver_name}}</div>
+              <div>Total price: {{order.total | price}} $</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

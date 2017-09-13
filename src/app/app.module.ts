@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { Http, HttpModule } from '@angular/http';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +16,7 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
 import { ProductsBySearchComponent } from './products-by-search/products-by-search.component';
 import { MakeOrderComponent } from './make-order/make-order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderListComponent } from './order-list/order-list.component';
 import {
   HeaderComponent,
   FooterComponent,
@@ -25,6 +26,7 @@ import {
   SingleProductComponent,
   ListProductComponent,
   SearchComponent,
+  UserAsideComponent,
 
   ApiService,
   JwtService,
@@ -33,11 +35,12 @@ import {
   PagerService,
   CartService,
   AuthGuardService,
-  AddCartService,
   ProductService,
+  OrderService,
 
   PricePipe,
-  ShowQuantityPipe
+  ShowQuantityPipe,
+  OrderIdPipe
 } from './shared';
 
 @NgModule({
@@ -60,11 +63,14 @@ import {
     ConfirmAccountComponent,
     SearchComponent,
     ProductsBySearchComponent,
+    UserAsideComponent,
+    MakeOrderComponent,
+    OrderDetailComponent,
+    OrderListComponent,
 
     PricePipe,
     ShowQuantityPipe,
-    MakeOrderComponent,
-    OrderDetailComponent,
+    OrderIdPipe,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +87,8 @@ import {
     PagerService,
     CartService,
     AuthGuardService,
-    AddCartService,
-    ProductService
+    ProductService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

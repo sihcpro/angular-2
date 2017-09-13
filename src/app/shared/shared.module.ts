@@ -10,12 +10,15 @@ import {
   AsideComponent,
   SliderComponent,
   SingleProductComponent,
-  ListProductComponent
+  ListProductComponent,
+  SearchComponent,
+  UserAsideComponent
 } from './layout';
-import { PricePipe } from './pipes';
-import { ShowQuantityPipe } from './pipes/show-quantity.pipe';
-import { SearchComponent } from './layout/search/search.component';
-
+import { 
+  PricePipe,
+  ShowQuantityPipe
+} from './pipes';
+import { OrderIdPipe } from './pipes/order-id.pipe';
 
 @NgModule({
   imports: [
@@ -41,7 +44,11 @@ import { SearchComponent } from './layout/search/search.component';
 
     ShowQuantityPipe,
 
-    SearchComponent
+    SearchComponent,
+
+    UserAsideComponent,
+
+    OrderIdPipe
 
   ],
 

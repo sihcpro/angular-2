@@ -11,7 +11,11 @@
     width: 100%;
     background-color: #56ff00;
   }
-  .product-name{
-    float: left;
+  .info{
+    text-align: left;
+
+    .shop-name{
+      float: right;
+    }
   }
 }

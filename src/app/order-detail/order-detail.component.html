@@ -1,3 +1,48 @@
-<p>
-  order-detail works!
-</p>
+<app-user-aside></app-user-aside>
+
+<div class="col-md-9">
+  <div class="leftbar product-in-order">
+    <h3>Your order {{order_id | orderId}}</h3>
+    <table class="table table-striped">
+      <thead class="title-table">
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody *ngIf=" all_orders !== []">
+        <tr *ngFor=" let order of all_orders; let i = index ">
+          <td class="small-img">
+            <a [routerLink]="['/product']" [queryParams]="{name: order.product.slug}">
+              <img src="{{order.product_image.url}}">
+            </a>
+          </td>
+          <td class="info">
+            <a class="name" [routerLink]="['/product']" [queryParams]="{name: order.product.slug}">
+              {{order.product.name}}
+            </a>
+            <br>
+            <a [routerLink]="['/shop']" [queryParams]="{name: order.shop.slug}">
+              {{order.shop.shop_name}}
+            </a>
+            <br>
+            <span>
+              {{order.product.quantity_stock | showQuantity}}
+            </span>
+          </td>
+          <td class="price">
+            {{order.price | price}} $
+          </td>
+          <td class="quantity">
+            {{order.quantity}}
+          </td>
+          <td class="price">
+            {{order.price * order.quantity | price}} $
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

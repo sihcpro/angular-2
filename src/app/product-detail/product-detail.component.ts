@@ -13,14 +13,15 @@ import {
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit, OnChanges {
+  loading: boolean = true;
+
   product: any = {};
   productSlug: string = '';
   images: Array<any> = [];
-  loading: boolean = true;
 
   constructor(
-    private _apiService: ApiService,
     private _route: ActivatedRoute,
+    private _apiService: ApiService,
     private _notificationService: NotificationService
   ) {
     this._route.queryParams.subscribe(data => {

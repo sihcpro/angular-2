@@ -13,25 +13,25 @@
       <tbody *ngIf=" all_product !== []">
         <tr *ngFor=" let product of all_product; let i = index ">
           <td class="small-img">
-            <a [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">
-              <img src="{{product.url}}">
+            <a [routerLink]="['/product']" [queryParams]="{name: product.product.slug}">
+              <img src="{{product.product_image.url}}">
             </a>
           </td>
           <td class="info">
-            <a class="name" [routerLink]="['/product']" [queryParams]="{name: product.product_slug}">
-              {{product.product_name}}
+            <a class="name" [routerLink]="['/product']" [queryParams]="{name: product.product.slug}">
+              {{product.product.name}}
             </a>
             <br>
-            <a [routerLink]="['/shop']" [queryParams]="{name: product.shop_slug}">
-              {{product.shop_name}}
+            <a [routerLink]="['/shop']" [queryParams]="{name: product.shop.slug}">
+              {{product.shop.shop_name}}
             </a>
             <br>
             <span>
-              {{product.quantity_stock | showQuantity}}
+              {{product.product.quantity_stock | showQuantity}}
             </span>
           </td>
           <td class="price">
-            {{product.price | price}} $
+            {{product.product.price | price}} $
           </td>
           <td class="quantity">
             <button (click)=" changeQuantity( i, -1)" [disabled]=" product.quantity < 2">-</button>
@@ -49,6 +49,7 @@
     </table>
   </div>
 </div>
+
 <div class="col-md-3">
   <div class="leftbar cart-sumary">
     <h3 class="title">

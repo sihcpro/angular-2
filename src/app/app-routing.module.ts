@@ -13,6 +13,7 @@ import { ConfirmAccountComponent } from './confirm-account/confirm-account.compo
 import { ProductsBySearchComponent } from './products-by-search/products-by-search.component';
 import { MakeOrderComponent } from './make-order/make-order.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
   { path: 'find/:key', component: ProductsBySearchComponent },
   { path: 'make-order', component: MakeOrderComponent },
+  { path: 'orders', component: OrderListComponent },
   { path: 'order/:id', component: OrderDetailComponent }
 ];
 

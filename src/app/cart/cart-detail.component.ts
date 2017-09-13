@@ -34,7 +34,7 @@ export class CartDetailComponent implements OnInit {
 
   changeQuantity(i: number, change: number = 0) {
     let product = this.all_product[i];
-    if(product.quantity + change > 0 && product.quantity + change <= product.quantity_stock) {
+    if(product.quantity + change > 0 && product.quantity + change <= product.product.quantity_stock) {
       this._cartService.updateQuantity(i, change);
       this.loading = false;
     }

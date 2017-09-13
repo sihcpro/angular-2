@@ -66,9 +66,9 @@
     <table class="table table-striped">
       <tr *ngFor=" let product of all_product">
         <td class="info">
-          <span class="product-name">{{product.product_name}}</span>
+          <span class="product-name">{{product.product.name}}</span>
           <br>
-          {{product.shop_name}}
+          <span class="shop-name">{{product.shop.shop_name}}</span>
         </td>
         <td class="quantity">{{product.quantity}}</td>
         <td class="price">{{product.subtotal_price | price}} $</td>

@@ -22,6 +22,11 @@ export class CartService {
   total_price: number = 0.0;
   amount_products: number = 0;
 
+  subCre: any;
+  subUpd: any;
+  subDel: any;
+  subGet: any;
+
   constructor(
     private _http: Http,
     private _apiServer: ApiService,
@@ -37,7 +42,7 @@ export class CartService {
   private find = (slug: string) => {
     let d: number = 0;
     for (let product of this.all_products) {
-      if( product.product_slug === slug ) {
+      if( product.product.slug === slug ) {
         return d;
       }
       else d++;
@@ -48,7 +53,7 @@ export class CartService {
   createQuantity = (slug: string = "", quantity: number = 1) => {
     let i = this.find( slug );
     if( i === -1 ) {
-      this._apiServer.post('/users/carts', { 'slug':     slug, 'quantity': quantity })
+      this.subCre = this._apiServer.post('/users/carts', { 'slug':     slug, 'quantity': quantity })
       .subscribe(
         data => {
           if( data.status === 200 ) {
@@ -67,13 +72,13 @@ export class CartService {
   updateQuantity = (i: number, change: number = 0) => {
     let product = this.all_products[i];
     console.log(product);
-    this._apiServer.put('/users/carts', {'slug': product.product_slug, 'quantity': product.quantity+change})
+    this.subUpd = this._apiServer.put('/users/carts', {'slug': product.product.slug, 'quantity': product.quantity+change})
     .subscribe(
       data => {
         if( data.status === 200 ) {
           product.quantity += change;
-          product.subtotal_price = product.quantity * product.price;
-          this.total_price += change * product.price;
+          product.subtotal_price = product.quantity * product.product.price;
+          this.total_price += change * product.product.price;
           this.amount_products += change;
           this.update();
         } else {
@@ -87,11 +92,11 @@ export class CartService {
 
   deleteProduct = (i: number) => {
     let product = this.all_products[i];
-    return this._apiServer.delete('/users/carts', 'slug', product.product_slug)
+    this.subDel = this._apiServer.delete('/users/carts', 'slug', product.product_slug)
     .subscribe(
       data => {
         if (data.status === 200) {
-          this.total_price -= product.price * product.quantity;
+          this.total_price -= product.product.price * product.quantity;
           this.amount_products -= product.quantity;
           this.all_products.splice(i, 1);
           this.update();
@@ -105,7 +110,7 @@ export class CartService {
   }
 
   getProducts = () => {
-    this._apiServer.get('/users/carts')
+    this.subGet =  this._apiServer.get('/users/carts')
     .subscribe(
       data => {
         this.all_products = data;
@@ -113,7 +118,7 @@ export class CartService {
         this.amount_products = 0;
         // console.log(this.all_products);
         for (var product of this.all_products) {
-          product['subtotal_price'] = product.price * product.quantity;
+          product['subtotal_price'] = product.product.price * product.quantity;
           this.total_price += product.subtotal_price;
           this.amount_products += product.quantity;
         }
@@ -133,7 +138,15 @@ export class CartService {
     this.update();
   }
 
+  ngOnDestroy() {
+    this.subCre.unsubscribe();
+    this.subGet.unsubscribe();
+    this.subUpd.unsubscribe();
+    this.subDel.unsubscribe();
+  }
+
   private update = () => {
+    console.log(this.all_products);
     this.allProductsSubject.next(this.all_products);
     this.totalPriceSubject.next(this.total_price);
     this.amountSubject.next(this.amount_products);
