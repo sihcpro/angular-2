@@ -71,7 +71,7 @@ export class MakeOrderComponent implements OnInit {
       };
       this._apiService.put('/users', data).subscribe(data => {
         if (data.status === 202) {
-          this._notificationService.printSuccessMessage(data.message);
+          this._notificationService.printSuccessMessage('Update success!');
           this.loading = false;
           this.lockUpdate = true;
           this.getUser();
@@ -121,7 +121,7 @@ export class MakeOrderComponent implements OnInit {
     .subscribe(
       data => {
         if( data.status === 200 ) {
-          this._notificationService.printSuccessMessage(data.message);
+          this._notificationService.printSuccessMessage('Order succeed!');
           this._cartService.orderSuccess();
           this._router.navigate(['order/'+ data.order_id]);
         }

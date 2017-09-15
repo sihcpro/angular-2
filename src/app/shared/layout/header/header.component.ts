@@ -12,7 +12,9 @@ import { ApiService } from '../../services/index';
 export class HeaderComponent implements OnInit {
 
   auth_token: string;
-  categories: any;
+  categories: Array<any> = [];
+  categories_array = [0,1,2];
+
   categoriesSub: any;
 
   constructor(
@@ -27,6 +29,7 @@ export class HeaderComponent implements OnInit {
     this.categoriesSub = this._apiService.getUnAuthorticate('/categories')
       .subscribe(data => {
         this.categories = data;
+        this.categories_array = [1, 1, 1];
         console.log(this.categories);
       });
   }

@@ -11,7 +11,7 @@
     </div>
     <h4 class="price"><strong>$</strong>{{product.price | price}}</h4>
     <div class="button_group">
-      <button class="button add-cart" (click)=" addCart(product.slug)">Add To Cart</button>
+      <button class="button add-cart" [disabled]=" product.quantity_stock === 0" (click)=" addCart(product.slug)">{{(product.quantity_stock === 0 ? 'Out of Order' : 'Add To Cart')}}</button>
       <button class="button compare" type="button"> <i class="fa fa-exchange"></i></button>
       <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
     </div>

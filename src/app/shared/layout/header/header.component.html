@@ -64,53 +64,32 @@
           </ul>
           <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
           <div class="navbar-collapse collapse">
-            <ul *ngFor=" let category of categories" class="nav navbar-nav">
-             <li class="active dropdown">
-              <a [routerLink]="['category', category.slug]" class="parent-category dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
+            <ul class="nav navbar-nav">
+              <li class="dropdown" *ngFor=" let i of [ 0, 1, 2]">
+                <a [routerLink]="['category', categories[i].slug]" class="dropdown-toggle" data-toggle="dropdown">{{categories[i].name}}</a>
+                <div class="dropdown-menu">
+                  <ul class="mega-menu-links" style="width: 200px;">
+                  <li *ngFor=" let child of categories[i].children">
+                     <a [routerLink]="['category', child.slug]">{{child.name}}</a>
+                   </li>
+                 </ul>
+               </div>
+             </li>
+           </ul>
+         </div>
+<!--           <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+             <li class="dropdown" *ngFor=" let category of categories">
+              <a  class="parent-category dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
               <div class="dropdown-menu" *ngIf="category.children.size != 0">
                 <ul class="mega-menu-links" *ngFor=" let child of category.children">
-                  <li>
-                    <a href="" [routerLink]="['category', child.slug]" >{{child.name}}</a>
+                  <li class="dropdown dropdown-hover">
+                    <a class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['category', child.slug]" >{{child.name}}</a>
                   </li>
                 </ul>
               </div>
-<!--              </li>
-              <li><a href="productgird.html">men</a></li>
-              <li><a href="productlitst.html">women</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fashion</a>
-                <div class="dropdown-menu mega-menu">
-                  <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                      <ul class="mega-menu-links">
-                        <li><a href="productgird.html">New Collection</a></li>
-                        <li><a href="productgird.html">Shirts & tops</a></li>
-                        <li><a href="productgird.html">Laptop & Brie</a></li>
-                        <li><a href="productgird.html">Dresses</a></li>
-                        <li><a href="productgird.html">Blazers & Jackets</a></li>
-                        <li><a href="productgird.html">Shoulder Bags</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                      <ul class="mega-menu-links">
-                        <li><a href="productgird.html">New Collection</a></li>
-                        <li><a href="productgird.html">Shirts & tops</a></li>
-                        <li><a href="productgird.html">Laptop & Brie</a></li>
-                        <li><a href="productgird.html">Dresses</a></li>
-                        <li><a href="productgird.html">Blazers & Jackets</a></li>
-                        <li><a href="productgird.html">Shoulder Bags</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li><a href="productgird.html">gift</a></li>
-              <li><a href="productgird.html">kids</a></li>
-              <li><a href="productgird.html">blog</a></li>
-              <li><a href="productgird.html">jewelry</a></li>
-              <li><a href="contact.html">contact us</a></li> -->
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

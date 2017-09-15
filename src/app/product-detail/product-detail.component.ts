@@ -4,7 +4,8 @@ import { environment } from '../../environments/environment';
 declare var jQuery: any;
 import {
   ApiService,
-  NotificationService
+  NotificationService,
+  CartService
 } from 'app/shared';
 
 @Component({
@@ -18,12 +19,15 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   product: any = {};
   productSlug: string = '';
   images: Array<any> = [];
+  quantity: any;
+  choice: number = 1;
 
   constructor(
     private _route: ActivatedRoute,
     private _apiService: ApiService,
+    private _cartService: CartService,
     private _notificationService: NotificationService
-  ) {
+    ) {
     this._route.queryParams.subscribe(data => {
       this.productSlug = data['name'];
     })
@@ -34,26 +38,17 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       this.productSlug = data['name'];
     });
     this._apiService.get('/products/' + this.productSlug)
-      .subscribe(data => {
-        this.product = data;
-        
-        this.images = this.product.product_images;
-        this.loading = false;
-      }, err => {
-        this._notificationService.printErrorMessage(environment.error_load_data);
-      });
+    .subscribe(data => {
+      this.product = data;
+      this.images = this.product.product_images;
+      this.loading = false;
+    }, err => {
+      this._notificationService.printErrorMessage(environment.error_load_data);
+    });
   }
 
   ngOnInit() {
-    this._apiService.getUnAuthorticate('/products/' + this.productSlug)
-      .subscribe(data => {
-        this.product = data;
-        console.log(this.product);
-        this.images = this.product.product_images;
-        this.loading = false;
-      }, err => {
-        this._notificationService.printErrorMessage(environment.error_load_data);
-      });
+    this.getData();
 
     jQuery("#hot").carouFredSel({
       auto: !1, prev: "#prev_hot", next: "#next_hot", mousewheel: !1, swipe: {
@@ -65,6 +60,36 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         }
       }
     });
+  }
 
+  subData: any;
+  getData = () => {
+    this.subData = this._apiService.getUnAuthorticate('/products/' + this.productSlug)
+    .subscribe(data => {
+      this.product = data;
+      console.log(this.product);
+      this.images = this.product.product_images;
+      this.loading = false;
+      this.quantity = Array(Math.min(this.product.quantity_stock, 10)).fill(1).map((x,i)=>i);
+      console.log(this.quantity);
+    }, err => {
+      this._notificationService.printErrorMessage(environment.error_load_data);
+    });
+  }
+
+  addCart = () => {
+    console.log(this.choice);
+    if( this.choice <= this.product.quantity_stock && this.choice !== 0 ) {
+      console.log('ok');
+      this._cartService.createQuantity(this.product.slug, this.choice);
+    }
+  }
+
+  onChange(quantity) {
+    this.choice = Math.min(quantity.target.value, this.product.quantity_stock);
+  }
+
+  ngOnDestroy() {
+    this.subData.unsubscribe();
   }
 }
